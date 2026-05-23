@@ -621,6 +621,7 @@
         triggered = true;
 
         // Immediately skip on reduced motion
+        sessionStorage.setItem("intro-seen", "1");
         if (prefersReducedMotion) {
           window.location.href = "index.html";
           return;
@@ -636,6 +637,7 @@
 
         const tl = gsap.timeline({
           onComplete() {
+            sessionStorage.setItem("intro-seen", "1");
             window.location.href = "index.html";
           },
         });
