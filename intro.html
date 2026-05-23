@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michelle's Quinceañera — A Magical Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="prefetch" href="index.html" />
+    <style>
+      /* ── Theme variables (mirror landing) ──────────────────── */
+      :root {
+        --blush:    #fdc1d6;
+        --baby-pink:#ffb5c1;
+        --rose-mist:#f7d6e0;
+        --mauve:    #e8b4c7;
+        --wine:     #8a4a5e;
+        --berry:    #c14f72;
+        --ink:      #5a2639;
+        --cream:    #fff8fb;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        min-height: 100vh;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 30% 10%, rgba(255,255,255,0.9), transparent 24rem),
+          linear-gradient(135deg, #fff7fb 0%, #ffd7e5 46%, #eaa1bc 100%);
+        font-family: "Montserrat", Arial, sans-serif;
+        display: grid;
+        place-items: center;
+      }
+
+      /* ── Petal field (mirror landing) ─────────────────────── */
+      .petal-field {
+        position: fixed;
+        inset: 0;
+        z-index: 5;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .petal {
+        position: absolute;
+        top: -12vh;
+        left: var(--x);
+        width: var(--size);
+        opacity: var(--petal-opacity);
+        filter: drop-shadow(0 10px 10px rgba(193,79,114,0.08));
+        animation: petalFall var(--duration) linear infinite;
+        animation-delay: var(--delay);
+      }
+
+      .petal::before {
+        content: "";
+        display: block;
+        aspect-ratio: 0.74;
+        border-radius: 72% 28% 72% 28% / 78% 34% 66% 22%;
+        background:
+          radial-gradient(circle at 68% 26%, rgba(255,255,255,0.78), transparent 28%),
+          linear-gradient(145deg, rgba(255,248,251,0.96), rgba(253,193,214,0.84) 45%, rgba(193,79,114,0.36));
+        box-shadow: inset -4px -8px 12px rgba(193,79,114,0.08);
+        transform: rotate(var(--tilt));
+        animation: petalFlutter var(--flutter) ease-in-out infinite alternate;
+      }
+
+      /* ── Ambient sparkles ──────────────────────────────────── */
+      .sparkle-field {
+        position: fixed;
+        inset: 0;
+        z-index: 6;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .sparkle-field span {
+        position: absolute;
+        left: var(--x);
+        top:  var(--y);
+        width:  calc(9px * var(--s, 1));
+        height: calc(9px * var(--s, 1));
+        opacity: 0;
+        transform: rotate(45deg);
+        animation: twinkle 3.4s ease-in-out infinite;
+        animation-delay: var(--d);
+      }
+
+      .sparkle-field span::before,
+      .sparkle-field span::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #fff;
+        border-radius: 999px;
+        box-shadow: 0 0 18px rgba(255,255,255,0.92);
+      }
+
+      .sparkle-field span::after { transform: rotate(90deg); }
+
+      /* ── Butterflies ───────────────────────────────────────── */
+      .butterfly {
+        position: fixed;
+        z-index: 7;
+        width: 64px;
+        color: #f46ba1;
+        opacity: 0.62;
+        filter: drop-shadow(0 10px 18px rgba(193,79,114,0.2));
+        pointer-events: none;
+      }
+
+      .butterfly svg { display: block; width: 100%; height: auto; }
+
+      .butterfly path:first-child {
+        fill: currentColor;
+        fill-opacity: 0.32;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+
+      .butterfly path:last-child {
+        fill: none;
+        stroke: var(--wine);
+        stroke-width: 2;
+        stroke-linecap: round;
+        opacity: 0.4;
+      }
+
+      .butterfly--a {
+        top: 18%;
+        left: 8%;
+        animation: bflyA 8s ease-in-out infinite;
+      }
+
+      .butterfly--b {
+        bottom: 22%;
+        right: 7%;
+        width: 50px;
+        transform: rotate(12deg);
+        animation: bflyB 9.5s ease-in-out infinite;
+      }
+
+      /* ── Main stage ────────────────────────────────────────── */
+      .intro-stage {
+        position: relative;
+        z-index: 10;
+        display: grid;
+        place-items: center;
+        gap: clamp(12px, 2.4vw, 24px);
+        padding: clamp(16px, 3.5vw, 36px) 24px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* ── Header ────────────────────────────────────────────── */
+      .intro-header { display: grid; justify-items: center; gap: 4px; }
+
+      .crown {
+        width: 66px;
+        color: var(--berry);
+        opacity: 0.9;
+        filter: drop-shadow(0 8px 16px rgba(193,79,114,0.18));
+        animation: crownFloat 5s ease-in-out infinite;
+      }
+
+      .crown svg { display: block; width: 100%; height: auto; }
+
+      .crown path, .crown circle {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .intro-eyebrow {
+        margin: 8px 0 0;
+        color: var(--berry);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .intro-title {
+        margin: 2px 0 0;
+        color: var(--berry);
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+        font-weight: 500;
+        line-height: 1;
+        text-shadow: 0 14px 34px rgba(138,74,94,0.14);
+      }
+
+      .divider {
+        display: grid;
+        grid-template-columns: 56px 56px 56px;
+        align-items: center;
+        gap: 10px;
+        margin-top: 6px;
+        color: var(--berry);
+      }
+
+      .divider span {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, currentColor, transparent);
+        opacity: 0.55;
+      }
+
+      .divider svg { display: block; width: 100%; height: auto; }
+      .divider path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+      .divider circle { fill: currentColor; stroke: none; }
+
+      /* ── Video shell ───────────────────────────────────────── */
+      .video-wrap {
+        position: relative;
+        width: min(860px, calc(100vw - 40px));
+      }
+
+      .video-shell {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow:
+          0 32px 80px rgba(138,74,94,0.3),
+          0 0 0 1px rgba(138,74,94,0.14),
+          inset 0 0 0 1px rgba(255,255,255,0.55);
+        isolation: isolate;
+        transform-origin: center center;
+      }
+
+      /* Satin shimmer sweep */
+      .video-shell::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background: linear-gradient(110deg, transparent 0 34%, rgba(255,255,255,0.28) 48%, transparent 62%);
+        transform: translateX(-78%);
+        animation: satinSweep 7s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      /* Glowing inner border */
+      .video-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        border-radius: inherit;
+        box-shadow: inset 0 0 56px rgba(255,255,255,0.38);
+        pointer-events: none;
+      }
+
+      .video-shell video {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 56vh;
+        object-fit: cover;
+      }
+
+      /* Play-prompt overlay (shows if autoplay blocked) */
+      .play-prompt {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: rgba(255, 248, 251, 0.22);
+        backdrop-filter: blur(6px);
+        cursor: pointer;
+      }
+
+      .play-prompt.is-visible { display: flex; }
+
+      .play-prompt__btn {
+        display: grid;
+        width: 72px;
+        height: 72px;
+        place-items: center;
+        border: none;
+        border-radius: 50%;
+        color: #fff8fb;
+        background: linear-gradient(135deg, #d85f88, #8a4a5e);
+        box-shadow: 0 18px 40px rgba(138,74,94,0.34);
+        cursor: pointer;
+        transition: transform 240ms ease, box-shadow 240ms ease;
+      }
+
+      .play-prompt__btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 24px 48px rgba(138,74,94,0.44);
+      }
+
+      .play-prompt__btn svg { width: 28px; }
+
+      .play-prompt__label {
+        color: var(--wine);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      /* ── Controls ──────────────────────────────────────────── */
+      .intro-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 18px;
+        border: 1px solid rgba(138,74,94,0.2);
+        border-radius: 999px;
+        font-family: "Montserrat", Arial, sans-serif;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease;
+        background: rgba(255,248,251,0.5);
+        color: var(--wine);
+        backdrop-filter: blur(14px);
+      }
+
+      .btn svg { width: 15px; flex: 0 0 auto; }
+      .btn svg path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        background: rgba(255,248,251,0.78);
+        box-shadow: 0 12px 26px rgba(138,74,94,0.12);
+      }
+
+      /* ── Portal transition overlay ─────────────────────────── */
+      .portal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      /* Deepening background tint */
+      .portal-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(193,79,114,0.0) 0%, rgba(90,38,57,0.0) 100%);
+        opacity: 0;
+      }
+
+      /* Light streaks radiating from center */
+      .streak {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 0;
+        transform-origin: top center;
+        opacity: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.95) 0%,
+          rgba(253,193,214,0.75) 45%,
+          rgba(193,79,114,0.28) 78%,
+          transparent 100%
+        );
+      }
+
+      /* Final white-pink flash */
+      .portal-flash {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fde8f0 38%, #fdc1d6 72%, #f4a0be 100%);
+        opacity: 0;
+      }
+
+      /* ── Keyframes ─────────────────────────────────────────── */
+      @keyframes petalFall {
+        from { transform: translate3d(0, -12vh, 0) rotate(0deg); }
+        to   { transform: translate3d(var(--drift), 116vh, 0) rotate(var(--spin)); }
+      }
+
+      @keyframes petalFlutter {
+        from { transform: translateX(-8px)  rotate(calc(var(--tilt) - 20deg)) scaleX(0.94); }
+        to   { transform: translateX(10px) rotate(calc(var(--tilt) + 22deg)) scaleX(1.04); }
+      }
+
+      @keyframes crownFloat {
+        0%, 100% { transform: translateY(0)   rotate(-1deg); }
+        50%       { transform: translateY(-8px) rotate(1deg);  }
+      }
+
+      @keyframes twinkle {
+        0%, 100% { opacity: 0;  transform: scale(0.4)  rotate(45deg); }
+        45%       { opacity: 1;  transform: scale(1.12) rotate(45deg); }
+      }
+
+      @keyframes satinSweep {
+        0%,  32% { transform: translateX(-78%); opacity: 0;    }
+        48%       {                              opacity: 0.85;  }
+        72%, 100% { transform: translateX(78%); opacity: 0;    }
+      }
+
+      @keyframes bflyA {
+        0%, 100% { transform: translate3d(0,0,0) rotate(-10deg); }
+        30%       { transform: translate3d(18px,-14px,0) rotate(4deg);  }
+        65%       { transform: translate3d(-8px, 10px,0) rotate(-6deg); }
+      }
+
+      @keyframes bflyB {
+        0%, 100% { transform: rotate(12deg)  translate3d(0,0,0);   }
+        40%       { transform: rotate(-2deg) translate3d(-14px,-12px,0); }
+        70%       { transform: rotate(18deg) translate3d(8px,8px,0);    }
+      }
+
+      /* ── Responsive ────────────────────────────────────────── */
+      @media (max-width: 600px) {
+        .crown         { width: 50px; }
+        .intro-title   { font-size: clamp(2rem, 10vw, 2.8rem); }
+        .butterfly--a  { width: 44px; }
+        .butterfly--b  { width: 36px; }
+      }
+
+      @media (max-height: 680px) {
+        .intro-eyebrow { display: none; }
+        .divider       { display: none; }
+        .crown         { width: 44px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Falling petals -->
+    <div class="petal-field" aria-hidden="true"></div>
+
+    <!-- Ambient sparkles -->
+    <div class="sparkle-field" aria-hidden="true">
+      <span style="--x:7%;  --y:12%; --d:0s;   --s:0.7"></span>
+      <span style="--x:20%; --y:74%; --d:1.3s; --s:0.5"></span>
+      <span style="--x:43%; --y:16%; --d:0.6s; --s:0.8"></span>
+      <span style="--x:61%; --y:68%; --d:1.9s; --s:0.6"></span>
+      <span style="--x:77%; --y:20%; --d:0.9s; --s:0.9"></span>
+      <span style="--x:88%; --y:58%; --d:2.2s; --s:0.65"></span>
+      <span style="--x:93%; --y:14%; --d:1.5s; --s:0.5"></span>
+      <span style="--x:13%; --y:84%; --d:2.8s; --s:0.6"></span>
+      <span style="--x:54%; --y:88%; --d:0.4s; --s:0.7"></span>
+      <span style="--x:34%; --y:44%; --d:3.1s; --s:0.45"></span>
+    </div>
+
+    <!-- Decorative butterflies -->
+    <div class="butterfly butterfly--a" aria-hidden="true">
+      <svg viewBox="0 0 96 80">
+        <path d="M45 38C34 9 9 3 5 22c-4 20 22 26 37 21-13 11-23 28-7 32 14 3 20-16 16-31 6 13 18 30 30 19 13-12-6-23-24-24 18-6 35-20 23-33C68-7 52 16 45 38Z" />
+        <path d="M46 36c7 5 9 16 4 25" />
+      </svg>
+    </div>
+    <div class="butterfly butterfly--b" aria-hidden="true">
+      <svg viewBox="0 0 96 80">
+        <path d="M45 38C34 9 9 3 5 22c-4 20 22 26 37 21-13 11-23 28-7 32 14 3 20-16 16-31 6 13 18 30 30 19 13-12-6-23-24-24 18-6 35-20 23-33C68-7 52 16 45 38Z" />
+        <path d="M46 36c7 5 9 16 4 25" />
+      </svg>
+    </div>
+
+    <!-- Portal transition overlay (hidden until triggered) -->
+    <div class="portal-overlay" id="portal-overlay" aria-hidden="true">
+      <div class="portal-bg"    id="portal-bg"></div>
+      <div id="streaks-container"></div>
+      <div class="portal-flash" id="portal-flash"></div>
+    </div>
+
+    <!-- Main content -->
+    <main class="intro-stage" id="intro-stage">
+
+      <div class="intro-header">
+        <div class="crown" aria-hidden="true">
+          <svg viewBox="0 0 120 72">
+            <path d="M18 50h84l-7 16H25L18 50Z" />
+            <path d="M26 47 18 20l25 20L60 8l17 32 25-20-8 27" />
+            <circle cx="18" cy="20" r="5" />
+            <circle cx="60" cy="8"  r="5" />
+            <circle cx="102" cy="20" r="5" />
+          </svg>
+        </div>
+        <p class="intro-eyebrow">You're invited</p>
+        <h1 class="intro-title">Michelle's Quinceañera</h1>
+        <div class="divider" aria-hidden="true">
+          <span></span>
+          <svg viewBox="0 0 60 18">
+            <path d="M2 9c8-11 16 11 28 0s20 11 28 0" />
+            <circle cx="30" cy="9" r="3" />
+          </svg>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Video -->
+      <div class="video-wrap">
+        <div class="video-shell" id="video-shell">
+          <video
+            id="intro-video"
+            muted
+            playsinline
+            preload="auto"
+          ></video>
+
+          <!-- Shown if autoplay is blocked -->
+          <div class="play-prompt" id="play-prompt" role="button" tabindex="0" aria-label="Watch the invitation">
+            <button class="play-prompt__btn" aria-label="Play video">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M5 3l14 9-14 9V3Z" />
+              </svg>
+            </button>
+            <span class="play-prompt__label">Watch the invitation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="intro-controls">
+        <button class="btn" id="unmute-btn" aria-label="Unmute video">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+          </svg>
+          Unmute
+        </button>
+        <button class="btn" id="skip-btn" aria-label="Skip intro and open invitation">
+          Skip intro &nbsp;→
+        </button>
+      </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script>
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* ── Falling petals ───────────────────────────────────── */
+      const petalField = document.querySelector(".petal-field");
+
+      if (petalField && !prefersReducedMotion) {
+        const compact = window.matchMedia("(max-width: 780px)").matches;
+        const count   = compact ? 14 : 26;
+        const frag    = document.createDocumentFragment();
+
+        for (let i = 0; i < count; i++) {
+          const p       = document.createElement("span");
+          const size    = 10 + Math.random() * (compact ? 10 : 16);
+          const dur     = 12 + Math.random() * 12;
+          const delay   = -Math.random() * dur;
+          const drift   = (Math.random() - 0.5) * (compact ? 90 : 170);
+          const spin    = (Math.random() > 0.5 ? 1 : -1) * (160 + Math.random() * 260);
+          const tilt    = (Math.random() - 0.5) * 70;
+          const opacity = 0.3 + Math.random() * 0.42;
+          const flutter = 2.8 + Math.random() * 2.8;
+
+          p.className = "petal";
+          p.style.setProperty("--x",            `${(Math.random() * 100).toFixed(2)}vw`);
+          p.style.setProperty("--size",         `${size.toFixed(2)}px`);
+          p.style.setProperty("--duration",     `${dur.toFixed(2)}s`);
+          p.style.setProperty("--delay",        `${delay.toFixed(2)}s`);
+          p.style.setProperty("--drift",        `${drift.toFixed(2)}px`);
+          p.style.setProperty("--spin",         `${spin.toFixed(2)}deg`);
+          p.style.setProperty("--tilt",         `${tilt.toFixed(2)}deg`);
+          p.style.setProperty("--petal-opacity", opacity.toFixed(2));
+          p.style.setProperty("--flutter",      `${flutter.toFixed(2)}s`);
+          frag.append(p);
+        }
+        petalField.append(frag);
+      } else if (petalField && prefersReducedMotion) {
+        petalField.hidden = true;
+      }
+
+      /* ── Build radial light streaks ──────────────────────── */
+      const streaksContainer = document.getElementById("streaks-container");
+      const NUM_STREAKS = 32;
+      const streakEls   = [];
+
+      for (let i = 0; i < NUM_STREAKS; i++) {
+        const angle  = (360 / NUM_STREAKS) * i;
+        const width  = 1.2 + Math.random() * 2.2;
+        const el     = document.createElement("div");
+        el.className = "streak";
+        el.style.cssText = `
+          width: ${width.toFixed(2)}px;
+          transform: translateX(-50%) rotate(${angle.toFixed(1)}deg);
+        `;
+        streaksContainer.appendChild(el);
+        streakEls.push(el);
+      }
+
+      /* ── Portal transition ───────────────────────────────── */
+      let triggered = false;
+
+      function launchPortal() {
+        if (triggered) return;
+        triggered = true;
+
+        // Immediately skip on reduced motion
+        if (prefersReducedMotion) {
+          window.location.href = "index.html";
+          return;
+        }
+
+        const overlay   = document.getElementById("portal-overlay");
+        const portalBg  = document.getElementById("portal-bg");
+        const flash     = document.getElementById("portal-flash");
+        const videoShell = document.getElementById("video-shell");
+        const stage     = document.getElementById("intro-stage");
+
+        overlay.style.pointerEvents = "all";
+
+        const tl = gsap.timeline({
+          onComplete() {
+            window.location.href = "index.html";
+          },
+        });
+
+        // ── Phase 1 (0s): Stage content rushes at you ─────────
+        tl.to(stage, {
+          scale: 2.6,
+          opacity: 0,
+          duration: 1.05,
+          ease: "power3.in",
+        }, 0);
+
+        // ── Phase 2 (0.1s): Deep background wells up ──────────
+        tl.to(portalBg, {
+          opacity: 1,
+          background: "radial-gradient(circle at 50% 50%, rgba(253,193,214,0.18) 0%, rgba(90,38,57,0.62) 100%)",
+          duration: 0.9,
+          ease: "power2.in",
+        }, 0.1);
+
+        // ── Phase 3 (0.22s): Streaks shoot from center outward ─
+        tl.to(streakEls, {
+          height: "130vh",
+          opacity: 1,
+          duration: 0.78,
+          ease: "power4.in",
+          stagger: { each: 0.008, from: "start" },
+        }, 0.22);
+
+        // ── Phase 4 (0.82s): Streaks narrow & fade ────────────
+        tl.to(streakEls, {
+          opacity: 0,
+          width: "0.5px",
+          duration: 0.3,
+          ease: "power2.out",
+        }, 0.82);
+
+        // ── Phase 5 (0.86s): Flash engulfs the screen ─────────
+        tl.to(flash, {
+          opacity: 1,
+          duration: 0.36,
+          ease: "power3.in",
+        }, 0.86);
+
+        // Hold at peak — onComplete fires at ~1.38s total
+        tl.to(flash, { opacity: 1, duration: 0.16 }, 1.22);
+      }
+
+      /* ── Video & controls ────────────────────────────────── */
+      const video      = document.getElementById("intro-video");
+      const playPrompt = document.getElementById("play-prompt");
+      const unmuteBtn  = document.getElementById("unmute-btn");
+      const skipBtn    = document.getElementById("skip-btn");
+      let   isMuted    = true;
+
+      // Pick video source based on viewport — mobile gets the vertical cut
+      const isMobileViewport = window.matchMedia("(max-width: 780px)").matches;
+      video.src = isMobileViewport ? "envelope-magic-mobile.mp4" : "envelope-video.mp4";
+      video.load();
+
+      // Attempt autoplay once source is ready; if blocked, show play prompt
+      video.addEventListener("canplay", function onCanPlay() {
+        video.removeEventListener("canplay", onCanPlay);
+        video.play().catch(() => {
+          playPrompt.classList.add("is-visible");
+        });
+      }, { once: true });
+
+      // Play prompt click / keyboard
+      function startPlayback() {
+        playPrompt.classList.remove("is-visible");
+        video.play();
+      }
+
+      playPrompt.addEventListener("click", startPlayback);
+      playPrompt.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") startPlayback();
+      });
+
+      // Unmute toggle
+      unmuteBtn.addEventListener("click", () => {
+        isMuted = !isMuted;
+        video.muted = isMuted;
+
+        if (isMuted) {
+          unmuteBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11 5 6 9H2v6h4l5 4V5Z"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            </svg>
+            Unmute`;
+          unmuteBtn.setAttribute("aria-label", "Unmute video");
+        } else {
+          unmuteBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11 5 6 9H2v6h4l5 4V5Z"/>
+              <path d="M23 9l-6 6M17 9l6 6"/>
+            </svg>
+            Mute`;
+          unmuteBtn.setAttribute("aria-label", "Mute video");
+        }
+      });
+
+      // Trigger portal when video ends
+      video.addEventListener("ended", launchPortal);
+
+      // Skip button
+      skipBtn.addEventListener("click", launchPortal);
+
+      /* ── Entrance animations ─────────────────────────────── */
+      if (window.gsap && !prefersReducedMotion) {
+        gsap.from(".intro-header > *", {
+          y: 24,
+          opacity: 0,
+          duration: 0.88,
+          ease: "power3.out",
+          stagger: 0.1,
+          delay: 0.25,
+        });
+
+        gsap.from(".video-wrap", {
+          y: 40,
+          opacity: 0,
+          scale: 0.97,
+          duration: 1.0,
+          ease: "back.out(1.15)",
+          delay: 0.52,
+        });
+
+        gsap.from(".intro-controls", {
+          y: 18,
+          opacity: 0,
+          duration: 0.72,
+          ease: "power3.out",
+          delay: 0.88,
+        });
+      }
+    </script>
+  </body>
+</html>

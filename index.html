@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michelle's Quinceanera Hero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="petal-field" aria-hidden="true"></div>
+
+    <main class="page-shell">
+      <nav class="hero__nav" aria-label="Primary">
+        <a class="brand" href="#" aria-label="Michelle's celebration home">
+          <span class="brand__mark">M</span>
+          <span>Michelle</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-controls="primary-menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="primary-menu" aria-label="Event sections">
+          <a href="#event-details" data-i18n="nav-details">Details</a>
+          <a href="#countdown" data-i18n="nav-countdown">Countdown</a>
+          <a href="#journey" data-i18n="nav-journey">Journey</a>
+          <a href="#dress-code" data-i18n="nav-dresscode">Dress Code</a>
+          <a href="#gifts" data-i18n="nav-gifts">Gifts</a>
+          <a href="#rsvp" data-i18n="nav-rsvp">RSVP</a>
+        </div>
+        <div class="lang-nav-group" role="group" aria-label="Select language">
+          <button class="lang-nav-btn is-active" id="lang-nav-en" type="button" lang="en">EN</button>
+          <button class="lang-nav-btn" id="lang-nav-es" type="button" lang="es">ES</button>
+        </div>
+      </nav>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__image" aria-hidden="true"></div>
+        <div class="hero__veil" aria-hidden="true"></div>
+        <div class="hero__sparkles" aria-hidden="true">
+          <span style="--x: 14%; --y: 18%; --d: 0s; --s: 0.8"></span>
+          <span style="--x: 26%; --y: 72%; --d: 1.2s; --s: 0.55"></span>
+          <span style="--x: 46%; --y: 20%; --d: 0.4s; --s: 0.7"></span>
+          <span style="--x: 60%; --y: 68%; --d: 1.7s; --s: 0.6"></span>
+          <span style="--x: 75%; --y: 24%; --d: 0.9s; --s: 0.9"></span>
+          <span style="--x: 87%; --y: 54%; --d: 2.1s; --s: 0.7"></span>
+          <span style="--x: 94%; --y: 18%; --d: 1.5s; --s: 0.5"></span>
+        </div>
+
+        <div class="butterfly butterfly--one" aria-hidden="true">
+          <svg viewBox="0 0 96 80" role="img">
+            <path d="M45 38C34 9 9 3 5 22c-4 20 22 26 37 21-13 11-23 28-7 32 14 3 20-16 16-31 6 13 18 30 30 19 13-12-6-23-24-24 18-6 35-20 23-33C68-7 52 16 45 38Z" />
+            <path d="M46 36c7 5 9 16 4 25" />
+          </svg>
+        </div>
+        <div class="butterfly butterfly--two" aria-hidden="true">
+          <svg viewBox="0 0 96 80" role="img">
+            <path d="M45 38C34 9 9 3 5 22c-4 20 22 26 37 21-13 11-23 28-7 32 14 3 20-16 16-31 6 13 18 30 30 19 13-12-6-23-24-24 18-6 35-20 23-33C68-7 52 16 45 38Z" />
+            <path d="M46 36c7 5 9 16 4 25" />
+          </svg>
+        </div>
+        <div class="butterfly butterfly--three" aria-hidden="true">
+          <svg viewBox="0 0 96 80" role="img">
+            <path d="M45 38C34 9 9 3 5 22c-4 20 22 26 37 21-13 11-23 28-7 32 14 3 20-16 16-31 6 13 18 30 30 19 13-12-6-23-24-24 18-6 35-20 23-33C68-7 52 16 45 38Z" />
+            <path d="M46 36c7 5 9 16 4 25" />
+          </svg>
+        </div>
+
+        <div class="hero__content">
+          <div class="crown" aria-hidden="true">
+            <svg viewBox="0 0 120 72" role="img">
+              <path d="M18 50h84l-7 16H25L18 50Z" />
+              <path d="M26 47 18 20l25 20L60 8l17 32 25-20-8 27" />
+              <circle cx="18" cy="20" r="5" />
+              <circle cx="60" cy="8" r="5" />
+              <circle cx="102" cy="20" r="5" />
+            </svg>
+          </div>
+          <p class="eyebrow" data-i18n="hero-eyebrow">Join us for a magical celebration</p>
+          <h1 id="hero-title">
+            <span>Michelle's</span>
+            <strong>Quincea&ntilde;era</strong>
+          </h1>
+          <div class="divider" aria-hidden="true">
+            <span></span>
+            <svg viewBox="0 0 72 18" role="img">
+              <path d="M2 9c11-11 20 11 34 0s23 11 34 0" />
+              <circle cx="36" cy="9" r="3" />
+            </svg>
+            <span></span>
+          </div>
+          <p class="hero__copy" data-i18n="hero-copy">
+            A rose-lit evening of music, family, and unforgettable sparkle.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#rsvp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s-7-4.5-9.5-8.7C.3 8.5 2.7 4 7 4c2.1 0 3.8 1.1 5 2.8C13.2 5.1 14.9 4 17 4c4.3 0 6.7 4.5 4.5 8.3C19 16.5 12 21 12 21Z" />
+              </svg>
+              <span data-i18n="hero-btn-rsvp">RSVP Now</span>
+            </a>
+            <a class="button button--ghost" href="#event-details" data-i18n="hero-btn-details">View Details</a>
+          </div>
+        </div>
+
+        <div class="hero__meta" aria-label="Event summary">
+          <span data-i18n="hero-meta-date">Saturday, June 20, 2026</span>
+          <span>6:00 PM</span>
+          <span>787 Hacienda</span>
+        </div>
+      </section>
+
+      <section
+        id="countdown"
+        class="countdown-section"
+        aria-labelledby="countdown-title"
+        data-event-date="2026-06-20T18:00:00-04:00"
+      >
+        <div class="countdown-section__bg" aria-hidden="true"></div>
+        <div class="countdown-section__sparkles" aria-hidden="true">
+          <span style="--x: 12%; --y: 18%; --d: 0s"></span>
+          <span style="--x: 28%; --y: 78%; --d: 1.4s"></span>
+          <span style="--x: 52%; --y: 12%; --d: 0.8s"></span>
+          <span style="--x: 78%; --y: 76%; --d: 2s"></span>
+          <span style="--x: 91%; --y: 28%; --d: 1.1s"></span>
+        </div>
+
+        <div class="countdown-intro">
+          <div class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 96 96" role="img">
+              <path d="M28 25h40c7 0 12 5 12 12v35c0 7-5 12-12 12H28c-7 0-12-5-12-12V37c0-7 5-12 12-12Z" />
+              <path d="M30 14v20M66 14v20M17 43h62" />
+              <path d="M37 62c5-8 17-8 22 0 5-8 17-3 12 7-5 11-23 15-23 15s-18-4-23-15c-5-10 7-15 12-7Z" />
+            </svg>
+          </div>
+          <p class="eyebrow" data-i18n="countdown-eyebrow">The magical night begins in</p>
+          <h2 id="countdown-title">
+            <span data-i18n="countdown-h2-span">Counting Every</span>
+            <strong data-i18n="countdown-h2-strong">Sparkling Moment</strong>
+          </h2>
+          <div class="divider" aria-hidden="true">
+            <span></span>
+            <svg viewBox="0 0 72 18" role="img">
+              <path d="M2 9c11-11 20 11 34 0s23 11 34 0" />
+              <circle cx="36" cy="9" r="3" />
+            </svg>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="countdown" role="timer" aria-live="polite">
+          <article class="time-card" aria-label="Days remaining">
+            <div class="rolling-value" data-unit="days" data-digits="3">000</div>
+            <p data-i18n="countdown-days">Days</p>
+          </article>
+          <article class="time-card" aria-label="Hours remaining">
+            <div class="rolling-value" data-unit="hours" data-digits="2">00</div>
+            <p data-i18n="countdown-hours">Hours</p>
+          </article>
+          <article class="time-card" aria-label="Minutes remaining">
+            <div class="rolling-value" data-unit="minutes" data-digits="2">00</div>
+            <p data-i18n="countdown-minutes">Minutes</p>
+          </article>
+          <article class="time-card" aria-label="Seconds remaining">
+            <div class="rolling-value" data-unit="seconds" data-digits="2">00</div>
+            <p data-i18n="countdown-seconds">Seconds</p>
+          </article>
+        </div>
+
+        <div class="countdown-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s-7-4.5-9.5-8.7C.3 8.5 2.7 4 7 4c2.1 0 3.8 1.1 5 2.8C13.2 5.1 14.9 4 17 4c4.3 0 6.7 4.5 4.5 8.3C19 16.5 12 21 12 21Z" />
+          </svg>
+          <span data-i18n="countdown-note">Saturday, June 20, 2026 at 6:00 PM</span>
+        </div>
+      </section>
+
+      <section class="journey-section" id="journey" aria-labelledby="journey-title">
+        <div class="journey-section__bg" aria-hidden="true"></div>
+        <div class="journey-section__sparkles" aria-hidden="true">
+          <span style="--x: 9%; --y: 22%; --d: 0.2s"></span>
+          <span style="--x: 21%; --y: 72%; --d: 1.6s"></span>
+          <span style="--x: 47%; --y: 16%; --d: 0.9s"></span>
+          <span style="--x: 76%; --y: 70%; --d: 2.2s"></span>
+          <span style="--x: 91%; --y: 34%; --d: 1.1s"></span>
+        </div>
+
+        <div class="journey-intro">
+          <div class="section-icon section-icon--journey" aria-hidden="true">
+            <svg viewBox="0 0 96 96" role="img">
+              <path d="M25 76h46c6 0 10-4 10-10V30c0-6-4-10-10-10H25c-6 0-10 4-10 10v36c0 6 4 10 10 10Z" />
+              <path d="M28 57 40 45l12 10 11-14 15 19" />
+              <circle cx="35" cy="34" r="6" />
+              <path d="M34 14h28" />
+            </svg>
+          </div>
+          <p class="eyebrow" data-i18n="journey-eyebrow">Michelle's Journey</p>
+          <h2 id="journey-title">
+            <span data-i18n="journey-h2-span">From Sweet Memories</span>
+            <strong data-i18n="journey-h2-strong">To Her Big Night</strong>
+          </h2>
+          <div class="divider" aria-hidden="true">
+            <span></span>
+            <svg viewBox="0 0 72 18" role="img">
+              <path d="M2 9c11-11 20 11 34 0s23 11 34 0" />
+              <circle cx="36" cy="9" r="3" />
+            </svg>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="journey-timeline" aria-label="Michelle's journey timeline">
+          <article class="journey-item journey-item--left">
+            <div class="photo-print photo-print--tilt-left">
+              <span class="tape tape--top" aria-hidden="true"></span>
+              <div class="photo-frame photo-frame--2011">
+                <img src="assets/michelle-2011.jpg" alt="Michelle in 2011" />
+              </div>
+            </div>
+            <div class="journey-copy">
+              <time datetime="2011">2011</time>
+              <h3 data-i18n="journey-item1-h3">The day my story began</h3>
+              <p data-i18n="journey-item1-p">First smiles, tiny dreams, and all the love that started this beautiful journey.</p>
+            </div>
+          </article>
+
+          <article class="journey-item journey-item--right">
+            <div class="photo-print photo-print--tilt-right">
+              <span class="tape tape--corner" aria-hidden="true"></span>
+              <div class="photo-frame photo-frame--2016">
+                <img src="assets/michelle-2016.jpg" alt="Michelle in 2016" />
+              </div>
+            </div>
+            <div class="journey-copy">
+              <time datetime="2016">2016</time>
+              <h3 data-i18n="journey-item2-h3">Beautiful memories</h3>
+              <p data-i18n="journey-item2-p">Growing, glowing, and filling every chapter with laughter, family, and grace.</p>
+            </div>
+          </article>
+
+          <article class="journey-item journey-item--left">
+            <div class="photo-print photo-print--tilt-left">
+              <span class="tape tape--bottom" aria-hidden="true"></span>
+              <div class="photo-frame photo-frame--2026">
+                <img src="assets/michelle-2026.jpg" alt="Michelle in 2026" />
+              </div>
+            </div>
+            <div class="journey-copy">
+              <time datetime="2026">2026</time>
+              <h3 data-i18n="journey-item3-h3">The next chapter begins</h3>
+              <p data-i18n="journey-item3-p">A magical celebration for the young woman she has become and the dreams ahead.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="journey-ending" data-i18n="journey-ending">And now... the next chapter begins with you.</p>
+      </section>
+
+      <section class="event-section" id="event-details" aria-labelledby="event-title">
+        <div class="event-section__bg" aria-hidden="true"></div>
+        <div class="event-section__sparkles" aria-hidden="true">
+          <span style="--x: 13%; --y: 20%; --d: 0.1s"></span>
+          <span style="--x: 25%; --y: 72%; --d: 1.2s"></span>
+          <span style="--x: 56%; --y: 16%; --d: 0.7s"></span>
+          <span style="--x: 76%; --y: 68%; --d: 2s"></span>
+          <span style="--x: 90%; --y: 32%; --d: 1.5s"></span>
+        </div>
+
+        <div class="event-card">
+          <div class="event-card__ornament" aria-hidden="true">
+            <svg viewBox="0 0 96 96" role="img">
+              <path d="M18 40h60l-6-18H24l-6 18Z" />
+              <path d="M22 40c0 6 9 6 9 0 0 6 9 6 9 0 0 6 9 6 9 0 0 6 9 6 9 0 0 6 9 6 9 0 0 6 9 6 9 0" />
+              <path d="M24 46v32h48V46" />
+              <path d="M38 78V58h20v20M31 56h8M57 56h8M16 78h64" />
+            </svg>
+          </div>
+
+          <p class="eyebrow" data-i18n="event-eyebrow">Reception</p>
+          <h2 id="event-title">
+            <span data-i18n="event-h2-span">Event</span>
+            <strong data-i18n="event-h2-strong">Details</strong>
+          </h2>
+
+          <div class="event-card__body">
+            <div class="event-detail">
+              <span class="event-detail__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="M4 21h16M6 21V9l6-5 6 5v12M10 21v-7h4v7M9 10h6" />
+                </svg>
+              </span>
+              <div>
+                <h3>787 Hacienda</h3>
+                <address>
+                  787 Hospital, DR<br />
+                  Gainesville, GA<br />
+                  30501
+                </address>
+              </div>
+            </div>
+
+            <div class="event-detail">
+              <span class="event-detail__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="M12 21s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+              </span>
+              <div>
+                <h3 data-i18n="event-location">Gainesville, GA</h3>
+                <p>6:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <a
+            class="button button--primary event-map"
+            href="https://www.google.com/maps/search/?api=1&query=787%20Hospital%20Dr%20Gainesville%20GA%2030501"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+            <span data-i18n="event-btn-map">View Map</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="dress-section" id="dress-code" aria-labelledby="dress-title">
+        <div class="dress-section__bg" aria-hidden="true"></div>
+        <div class="dress-section__sparkles" aria-hidden="true">
+          <span style="--x: 10%; --y: 24%; --d: 0.2s"></span>
+          <span style="--x: 24%; --y: 78%; --d: 1.4s"></span>
+          <span style="--x: 50%; --y: 14%; --d: 0.8s"></span>
+          <span style="--x: 78%; --y: 74%; --d: 2.1s"></span>
+          <span style="--x: 91%; --y: 32%; --d: 1.2s"></span>
+        </div>
+
+        <div class="dress-card">
+          <div class="dress-card__ornament" aria-hidden="true">
+            <img src="assets/wedding-dress-pink.png" alt="" />
+          </div>
+          <p class="eyebrow" data-i18n="dress-eyebrow">Dress Code</p>
+          <h2 id="dress-title">
+            <span data-i18n="dress-h2-span">Formal Attire</span>
+            <strong data-i18n="dress-h2-strong">Dress Code</strong>
+          </h2>
+
+          <div class="attire-grid" aria-label="Formal attire guidance">
+            <article class="attire-option">
+              <figure class="attire-photo attire-photo--suit">
+                <img src="assets/dress-code-suit.png" alt="Dark formal suit" />
+              </figure>
+              <h3 data-i18n="dress-gentlemen">Gentlemen</h3>
+              <ul>
+                <li data-i18n="dress-suit">Formal suit</li>
+              </ul>
+            </article>
+
+            <article class="attire-option">
+              <figure class="attire-photo attire-photo--dress">
+                <img src="assets/dress-code-gown.png" alt="Navy formal gown with gold details" />
+              </figure>
+              <h3 data-i18n="dress-ladies">Ladies</h3>
+              <ul>
+                <li data-i18n="dress-gown">Formal dress</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="reserved-colors" aria-label="Colors reserved for Michelle">
+            <p data-i18n="dress-reserved">Reserved for Michelle</p>
+            <div class="palette-row palette-row--reserved">
+              <span style="--swatch: #fdc1d6" aria-label="Pink"></span>
+              <span style="--swatch: #c98f9b" aria-label="Dusty rose"></span>
+            </div>
+          </div>
+
+          <div class="dress-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s-7-4.5-9.5-8.7C.3 8.5 2.7 4 7 4c2.1 0 3.8 1.1 5 2.8C13.2 5.1 14.9 4 17 4c4.3 0 6.7 4.5 4.5 8.3C19 16.5 12 21 12 21Z" />
+            </svg>
+            <div>
+              <h2 data-i18n="dress-note-h2">We look forward to celebrating in style with you!</h2>
+              <p data-i18n="dress-note-p">
+                Kindly note: To help make our quincea&ntilde;era stand out on her special day,
+                we respectfully ask guests to avoid wearing pink and dusty rose shades, as these colors
+                are reserved exclusively for Michelle.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gift-section" id="gifts" aria-labelledby="gift-title">
+        <div class="gift-section__bg" aria-hidden="true"></div>
+        <div class="gift-section__sparkles" aria-hidden="true">
+          <span style="--x: 11%; --y: 24%; --d: 0.2s"></span>
+          <span style="--x: 27%; --y: 76%; --d: 1.4s"></span>
+          <span style="--x: 51%; --y: 13%; --d: 0.8s"></span>
+          <span style="--x: 78%; --y: 73%; --d: 2.1s"></span>
+          <span style="--x: 91%; --y: 30%; --d: 1.2s"></span>
+        </div>
+
+        <article class="gift-card">
+          <div class="gift-card__ornament" aria-hidden="true">
+            <img src="assets/gift-icon-pink.png" alt="" />
+          </div>
+          <p class="eyebrow" data-i18n="gifts-eyebrow">With Love</p>
+          <h2 id="gift-title">
+            <span data-i18n="gifts-h2-span">Wishing Well</span>
+            <strong data-i18n="gifts-h2-strong">Monetary Gifts</strong>
+          </h2>
+
+          <figure class="gift-card__image">
+            <img src="assets/gift-box-blended.png" alt="Pink gift box with roses and satin bow" />
+          </figure>
+
+          <div class="gift-card__message">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s-7-4.5-9.5-8.7C.3 8.5 2.7 4 7 4c2.1 0 3.8 1.1 5 2.8C13.2 5.1 14.9 4 17 4c4.3 0 6.7 4.5 4.5 8.3C19 16.5 12 21 12 21Z" />
+            </svg>
+            <p data-i18n="gifts-message">
+              Your presence at our celebration is the greatest gift of all. However,
+              if you wish to honor Michelle with a gift, a card box for monetary
+              blessings will be available at the reception entrance.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="rsvp-section" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="rsvp-section__bg" aria-hidden="true"></div>
+        <div class="rsvp-section__sparkles" aria-hidden="true">
+          <span style="--x: 12%; --y: 18%; --d: 0.1s"></span>
+          <span style="--x: 26%; --y: 78%; --d: 1.3s"></span>
+          <span style="--x: 50%; --y: 16%; --d: 0.8s"></span>
+          <span style="--x: 76%; --y: 72%; --d: 2s"></span>
+          <span style="--x: 92%; --y: 28%; --d: 1.4s"></span>
+        </div>
+
+        <article class="rsvp-card">
+          <p class="eyebrow" data-i18n="rsvp-eyebrow">Kindly Reply</p>
+          <h2 id="rsvp-title">
+            <span data-i18n="rsvp-h2-span">RSVP</span>
+            <strong data-i18n="rsvp-h2-strong">With Love</strong>
+          </h2>
+
+          <form
+            class="rsvp-form"
+            id="rsvp-form"
+            data-script-url="https://script.google.com/macros/s/AKfycbxQ91p-oVYjSXMfI17VfisvQCMaRk6voZ_2aEsW8_5W1t4LOsotkCQ_1B8uXG0U_8Ot/exec"
+          >
+            <label class="form-field" for="full-name">
+              <span data-i18n="rsvp-name">Full Name</span>
+              <input id="full-name" name="fullName" type="text" autocomplete="name" required />
+            </label>
+
+            <fieldset class="attendance-field">
+              <legend data-i18n="rsvp-attend">Will you attend?</legend>
+              <label class="choice-card">
+                <input type="checkbox" name="attendance" value="Yes, I wouldn't miss it!" />
+                <span data-i18n="rsvp-yes">Yes, I wouldn't miss it!</span>
+              </label>
+              <label class="choice-card">
+                <input type="checkbox" name="attendance" value="Sadly, I can't make it." />
+                <span data-i18n="rsvp-no">Sadly, I can't make it.</span>
+              </label>
+            </fieldset>
+
+            <label class="form-field" for="guest-count">
+              <span data-i18n="rsvp-guests">Number of Guests</span>
+              <input id="guest-count" name="guestCount" type="number" min="0" max="10" value="1" required />
+            </label>
+
+            <button class="button button--primary rsvp-submit" type="submit">
+              <svg class="button-bow" viewBox="0 0 64 54" aria-hidden="true">
+                <path d="M27 22C17 8 5 7 3 21c-2 14 5 20 20 13" />
+                <path d="M37 22C47 8 59 7 61 21c2 14-5 20-20 13" />
+                <rect x="25" y="18" width="14" height="14" rx="4" />
+                <path d="M25 30v19l8-7 8 7V30" />
+                <path d="M39 30v21l8-7 8 7V31" />
+                <path d="M23 23 14 20M41 23l9-3M26 31c-4 3-6 7-7 12M38 31c4 3 6 7 7 12" />
+                <circle cx="14" cy="19" r="1.6" />
+                <circle cx="32" cy="44" r="1.6" />
+              </svg>
+              <span data-i18n="rsvp-submit">Confirm Attendance</span>
+            </button>
+
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+      </section>
+
+      <footer class="site-footer" aria-labelledby="footer-title">
+        <div class="footer-accent footer-accent--crown" aria-hidden="true">
+          <svg viewBox="0 0 80 54">
+            <path d="M12 39h56l-5 11H17l-5-11Z" />
+            <path d="M17 36 12 16l18 14L40 8l10 22 18-14-5 20" />
+            <circle cx="12" cy="16" r="4" />
+            <circle cx="40" cy="8" r="4" />
+            <circle cx="68" cy="16" r="4" />
+          </svg>
+        </div>
+        <div class="footer-accent footer-accent--flower" aria-hidden="true">
+          <span></span>
+        </div>
+        <div class="footer-accent footer-accent--butterfly" aria-hidden="true">
+          <svg viewBox="0 0 96 80">
+            <path d="M45 38C34 9 9 3 5 22c-4 20 22 26 37 21-13 11-23 28-7 32 14 3 20-16 16-31 6 13 18 30 30 19 13-12-6-23-24-24 18-6 35-20 23-33C68-7 52 16 45 38Z" />
+            <path d="M46 36c7 5 9 16 4 25" />
+          </svg>
+        </div>
+        <div class="footer-spark footer-spark--one" aria-hidden="true"></div>
+        <div class="footer-spark footer-spark--two" aria-hidden="true"></div>
+        <div class="footer-spark footer-spark--three" aria-hidden="true"></div>
+
+        <div class="footer-content">
+          <p class="footer-script" id="footer-title">Michelle Rodriguez</p>
+          <p class="footer-date">20 &bull; June &bull; 2026</p>
+          <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="#" data-i18n="footer-home">Home</a>
+            <a href="#countdown" data-i18n="footer-countdown">Countdown</a>
+            <a href="#journey" data-i18n="footer-journey">Journey</a>
+            <a href="#event-details" data-i18n="footer-location">Location</a>
+            <a href="#rsvp" data-i18n="footer-rsvp">RSVP</a>
+          </nav>
+          <p class="footer-love" data-i18n="footer-love">With love, the Rodriguez Osorio family</p>
+          <div class="footer-ribbon" aria-hidden="true"></div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Thank-you overlay (shown on successful RSVP) -->
+    <div
+      class="thankyou-overlay"
+      id="thankyou-overlay"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Thank you for your RSVP"
+    >
+      <div class="thankyou-backdrop" id="thankyou-backdrop"></div>
+      <div class="thankyou-card">
+        <button class="thankyou-close" id="thankyou-close" aria-label="Close thank you message">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <picture>
+          <source media="(max-width: 640px)" srcset="assets/thank-you-responsive.png" />
+          <img
+            class="thankyou-img"
+            src="assets/thank-you-desktop.png"
+            alt="Thank you! Your response has been received. We can't wait to celebrate this special day with you."
+            draggable="false"
+          />
+        </picture>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
